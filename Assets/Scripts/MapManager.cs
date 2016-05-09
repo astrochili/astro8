@@ -14,7 +14,7 @@ public class MapManager : MonoBehaviour {
 	
 	public Transform selectionQuad;
 	
-	public TDMap map;	
+	public MDMap map;	
 	[SerializeField] int xSizeChunks, ySizeChunks;
 	[SerializeField] int chunkSize = 8;
 	[SerializeField] GameObject chunkPrefab;
@@ -35,14 +35,14 @@ public class MapManager : MonoBehaviour {
 		}
 	}
 	
-	List<TDUnit> unitsPool = new List<TDUnit>();
-	public Dictionary<Vector2, TDUnit> units = new Dictionary<Vector2, TDUnit>();
-	List<TDObject> objectsPool = new List<TDObject>();
-	public Dictionary<Vector2, TDObject> objects = new Dictionary<Vector2, TDObject>();
+	List<MDUnit> unitsPool = new List<MDUnit>();
+	public Dictionary<Vector2, MDUnit> units = new Dictionary<Vector2, MDUnit>();
+	List<MDObject> objectsPool = new List<MDObject>();
+	public Dictionary<Vector2, MDObject> objects = new Dictionary<Vector2, MDObject>();
 		
 	
 	void Start() {
-		map = new TDMap(xSizeChunks * chunkSize, ySizeChunks * chunkSize);
+		map = new MDMap(xSizeChunks * chunkSize, ySizeChunks * chunkSize);
 		UpdateChunks();
 		float speed = ResManager.shared.animationSpeed;
 		InvokeRepeating("Animate", speed, speed);  
@@ -220,8 +220,8 @@ public class MapManager : MonoBehaviour {
 		}
 		chunk.name = "Chunk_"+position.x+"_"+position.y;
 		chunk.position = position;
-		TDTile[] tiles = map.GetTilesAt((int)position.x, (int)position.y, chunkSize, chunkSize);
-		TGTile[] textures = new TGTile[tiles.Length];
+		MDTile[] tiles = map.GetTilesAt((int)position.x, (int)position.y, chunkSize, chunkSize);
+		GDTile[] textures = new GDTile[tiles.Length];
 		for (int i = 0; i < tiles.Length; i++) {
 			textures[i] = ResManager.shared.terrainTextures[tiles[i].texture];
 		}
@@ -229,7 +229,7 @@ public class MapManager : MonoBehaviour {
 		return chunk;
 	}			
 
-	public TDObject GetObjectAt(Vector2 position) {
+	public MDObject GetObjectAt(Vector2 position) {
 		if (objects.ContainsKey(position)) {
 			 return objects[position];
 		} else {
@@ -237,7 +237,7 @@ public class MapManager : MonoBehaviour {
 		}
 	}
 
-	public TDUnit GetUnitAt(Vector2 position) {
+	public MDUnit GetUnitAt(Vector2 position) {
 		if (units.ContainsKey(position)) {
 			 return units[position];
 		} else {

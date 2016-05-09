@@ -13,7 +13,7 @@ public class MapChunk : MonoBehaviour {
 	Vector3[] vertices;
 	int[] triangles;
 	Vector2[] uv;
-	TGTile[] textures;
+	GDTile[] textures;
 	Dictionary<int, int> animations = new Dictionary<int, int>();
 
 	public Vector2 position {
@@ -64,12 +64,12 @@ public class MapChunk : MonoBehaviour {
 		_renderer.sharedMaterials[0].mainTexture = ResManager.shared.terrainTexture;
 	}
 
-	public void SetTextures(TGTile[] textures) {
+	public void SetTextures(GDTile[] textures) {
 		this.textures = textures;
 		animations.Clear();
 		int frame;
 		for (int i = 0; i < textures.Length; i++) {
-			TGTile tile = textures[i];
+			GDTile tile = textures[i];
 			Vector2[] uv = tile.uvs[0];
 			frame = 0;
 			if (tile.animation) {				

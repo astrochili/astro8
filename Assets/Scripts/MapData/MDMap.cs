@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 
-public class TDMap {
+public class MDMap {
 	
-	TDTile[] tiles;
+	MDTile[] tiles;
 	public int width;
 	public int height;
 	
-	public TDMap(int width, int height) {
+	public MDMap(int width, int height) {
 		this.width = width;
 		this.height = height;
-		tiles = new TDTile[width * height];
+		tiles = new MDTile[width * height];
 		
 		MakeTestMap();
 	} 
 	
-	public TDTile[] GetTilesAt(int x, int y, int width, int height) {
-		TDTile[] result = new TDTile[width*height];
+	public MDTile[] GetTilesAt(int x, int y, int width, int height) {
+		MDTile[] result = new MDTile[width*height];
 		for (int i = 0, xi = 0; xi < width; xi++) {
 			for (int yi = 0; yi < height; yi++, i++) {
 				result[i] = GetTileAt(x+xi, y+yi);
@@ -24,14 +24,14 @@ public class TDMap {
 		return result;
 	}
 	
-	public TDTile GetTileAt(int x, int y) {
+	public MDTile GetTileAt(int x, int y) {
 		if (x < 0 || x >= width || y < 0 || y >= height) {
 			return null;
 		}
 		return tiles[y*width + x];
 	}
 	
-	public bool SetTileAt(int x, int y, TDTile tile) {
+	public bool SetTileAt(int x, int y, MDTile tile) {
 		if (x < 0|| x >= width || y < 0 || y >= height) {
 			return false;	
 		}
@@ -50,7 +50,7 @@ public class TDMap {
 	void MakePlace(int left, int bottom, int width, int height) {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				SetTileAt(x, y, new TDTile(((Random.Range(0, 10) < 1))? TILES.TREE : TILES.GRASS));
+				SetTileAt(x, y, new MDTile(((Random.Range(0, 10) < 1))? TILES.TREE : TILES.GRASS));
 			}
 		}		
 	}
@@ -64,9 +64,9 @@ public class TDMap {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if (x == 0 || x == width-1 || y == 0 || y == height-1) {
-					SetTileAt(left+x, bottom+y, new TDTile(((Random.Range(0, 2) < 1))? TILES.GRASS : TILES.WATER));
+					SetTileAt(left+x, bottom+y, new MDTile(((Random.Range(0, 2) < 1))? TILES.GRASS : TILES.WATER));
 				} else {
-					SetTileAt(left+x, bottom+y, new TDTile(TILES.WATER));
+					SetTileAt(left+x, bottom+y, new MDTile(TILES.WATER));
 				}
 			}
 		}		
@@ -80,9 +80,9 @@ public class TDMap {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if (x == 0 || x == width-1 || y == 0 || y == height-1) {
-					SetTileAt(left+x, bottom+y, new TDTile(((Random.Range(0, 10) < 1))? TILES.WINDOW : TILES.WALL));
+					SetTileAt(left+x, bottom+y, new MDTile(((Random.Range(0, 10) < 1))? TILES.WINDOW : TILES.WALL));
 				} else {
-					SetTileAt(left+x, bottom+y, new TDTile(TILES.FLOOR));
+					SetTileAt(left+x, bottom+y, new MDTile(TILES.FLOOR));
 				}
 			}
 		}

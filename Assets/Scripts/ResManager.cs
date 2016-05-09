@@ -25,8 +25,8 @@ public class ResManager : MonoBehaviour {
 	public float animationSpeed = 0.3f;
 	float terrainWidth, terrainHeight;
 	
-	public TGTile[] terrainTextures;
-	Dictionary<int, TGTile[]> terrainTypes = new Dictionary<int, TGTile[]>();
+	public GDTile[] terrainTextures;
+	Dictionary<int, GDTile[]> terrainTypes = new Dictionary<int, GDTile[]>();
 	
 	void Awake() {
 		InitGraphic();
@@ -36,7 +36,7 @@ public class ResManager : MonoBehaviour {
 		terrainWidth = terrainTexture.width / tileResolution;
 		terrainHeight = terrainTexture.height / tileResolution;
 		JSONObject jsonRoot = new JSONObject(terrainCoords.text);
-		List<TGTile> textures = new List<TGTile>();
+		List<GDTile> textures = new List<GDTile>();
 		
 		for (int i = 0; i < jsonRoot.list.Count; i++) {
 			JSONObject jsonGroup = jsonRoot.list[i];
@@ -51,20 +51,20 @@ public class ResManager : MonoBehaviour {
 					JSONObject jsonTile = jsonTiles.list[t];
 					uvs[t] = GetUV(jsonTile.GetField(jX).f, jsonTile.GetField(jY).f);
 				}
-				TGTile tile = new TGTile(uvs);
+				GDTile tile = new GDTile(uvs);
 				if (jsonGroup.HasField(jSync)) {
 					tile.sync = jsonGroup.GetField(jSync).b;
 				}
-				terrainTypes[type] = new TGTile[1];
+				terrainTypes[type] = new GDTile[1];
 				terrainTypes[type][0] = tile;
 				textures.Add(tile);
 			} else {
 				// Пишем раздельные тайлы с общей группировкой
-				terrainTypes[type] = new TGTile[jsonTiles.list.Count];
+				terrainTypes[type] = new GDTile[jsonTiles.list.Count];
 				for (int t = 0; t < jsonTiles.list.Count; t++) {
 					JSONObject jsonTile = jsonTiles.list[t];
 					Vector2[] uv = GetUV(jsonTile.GetField("x").f, jsonTile.GetField("y").f);
-					TGTile tile = new TGTile(uv);
+					GDTile tile = new GDTile(uv);
 					if (jsonTile.HasField("weight")) {
 						tile.weight = (int)jsonTile.GetField("weight").f;	
 					}
@@ -88,7 +88,7 @@ public class ResManager : MonoBehaviour {
 	public int TextureIndexForTileType(int type) {
 		int result = 0;
 		float total = 0;
-		TGTile[] tiles = terrainTypes[type];
+		GDTile[] tiles = terrainTypes[type];
 		for (int i = 0; i < tiles.Length; i++) {
 			total += tiles[i].weight;
 		}

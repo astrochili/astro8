@@ -6,10 +6,6 @@ public enum Direction {
 	None, Up, Down, Left, Right
 };
 
-public struct TileResourcesStruct {
-	public int wood, coal, iron, copper, titan, silver, crudeoil, food;
-};
-
 public class TILES {
 	public const int FLOOR 			= 0;
 	public const int WALL			= 1;

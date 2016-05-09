@@ -46,9 +46,9 @@ public class Player : MonoBehaviour {
 	}
 	
 	void AttempToMove(Vector2 position) {
-		TDTile tile = MapManager.shared.map.GetTileAt((int)position.x, (int)position.y);
-		TDObject obj = MapManager.shared.GetObjectAt(position);
-		TDUnit unit = MapManager.shared.GetUnitAt(position);
+		MDTile tile = MapManager.shared.map.GetTileAt((int)position.x, (int)position.y);
+		MDObject obj = MapManager.shared.GetObjectAt(position);
+		MDUnit unit = MapManager.shared.GetUnitAt(position);
 		
 		if (tile == null || tile.solid || (tile.liquid && !onBoat)) {
 			Debug.Log("Solid surface!");
@@ -66,15 +66,15 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	void Interact(TDObject obj) {
+	void Interact(MDObject obj) {
 		Debug.Log("Interact!");
 	}
 	
-	void Talk(TDUnit unit) {
+	void Talk(MDUnit unit) {
 		Debug.Log("Talk!");
 	}
 	
-	void Attack(TDUnit unit) {
+	void Attack(MDUnit unit) {
 		Debug.Log("Attack!");
 	}
 	
