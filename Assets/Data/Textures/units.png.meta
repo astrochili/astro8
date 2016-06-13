@@ -1,15 +1,21 @@
 fileFormatVersion: 2
-guid: 0a6307120ff7d4cc781a8dc81ce84b00
-timeCreated: 1461932093
+guid: df82d4716202848e09a471072e333e50
+timeCreated: 1462818816
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: objects_0
-    21300002: objects_1
-    21300004: objects_2
-    21300006: objects_3
-    21300008: objects_4
-    21300010: objects_5
+    21300000: astronaut_left
+    21300002: astronaut_right
+    21300004: units_2
+    21300006: units_3
+    21300008: units_4
+    21300010: units_5
+    21300012: astronaut_top
+    21300014: astronaut_down
+    21300016: units_8
+    21300018: units_9
+    21300020: units_10
+    21300022: units_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,7 +62,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: objects_0
+    - name: astronaut_left
       rect:
         serializedVersion: 2
         x: 0
@@ -67,7 +73,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: objects_1
+    - name: astronaut_right
       rect:
         serializedVersion: 2
         x: 8
@@ -78,7 +84,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: objects_2
+    - name: units_2
       rect:
         serializedVersion: 2
         x: 16
@@ -89,7 +95,40 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: objects_3
+    - name: units_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 56
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: units_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 56
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: units_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 56
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: astronaut_top
       rect:
         serializedVersion: 2
         x: 0
@@ -100,7 +139,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: objects_4
+    - name: astronaut_down
       rect:
         serializedVersion: 2
         x: 8
@@ -111,10 +150,43 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: objects_5
+    - name: units_8
       rect:
         serializedVersion: 2
         x: 16
+        y: 48
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: units_9
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 48
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: units_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 8
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: units_11
+      rect:
+        serializedVersion: 2
+        x: 40
         y: 48
         width: 8
         height: 8

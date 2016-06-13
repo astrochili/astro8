@@ -433,6 +433,8 @@ MonoBehaviour:
   ySizeChunks: 5
   chunkSize: 8
   chunkPrefab: {fileID: 124766, guid: 456eadf06a23a4690a524332a32c99f7, type: 2}
+  objectPrefab: {fileID: 0}
+  unitPrefab: {fileID: 0}
 --- !u!114 &1831202862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +450,7 @@ MonoBehaviour:
   terrainTexture: {fileID: 2800000, guid: 729c5c036aca34a5a9a7db9dd509c914, type: 3}
   tileResolution: 8
   animationSpeed: 0.5
+  unitTextures: []
 --- !u!4 &1831202864
 Transform:
   m_ObjectHideFlags: 0

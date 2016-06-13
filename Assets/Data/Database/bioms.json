@@ -1,0 +1,26 @@
+{
+    "Russia": {
+        "ground": [
+            { "tiles": "grass", "speed": 1.0 }
+        ],
+        "water": [
+            { "tiles": "water", "gen": "lakes", "size": 0.1, "speed": 1.0 },
+            { "tiles": "water", "gen": "river", "size": 0.2, "speed": 1.0 }
+        ],
+        "resources": [
+            { "tiles": "tree", "gen": "random", "size": 0.5, "type": "wood"},
+            { "tiles": "berries", "gen": "random", "size": 0.3, "type": "food", "solid": false},
+            { "tiles": "rock", "gen": "group", "size": 0.2, "type": "rock"},
+            { "tiles": "coal", "gen": "group", "size": 0.2, "type": "coal", "solid": false},
+            { "tiles": "iron", "gen": "group", "size": 0.2, "type": "iron"}
+        ],
+        "units": [
+            { "unit": "bear", "countMin": 1, "countMax": 3},
+            { "unit": "fox", "countMin": 2, "countMax": 6},
+            { "unit": "bunny", "countMin": 6, "countMax": 10}
+        ],
+        "structs": [
+            { "type": "house", "gen": "group", "size": 0.3, "countMin": 2, "countMax": 5}
+        ]
+    }
+}

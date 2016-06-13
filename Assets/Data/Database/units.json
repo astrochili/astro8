@@ -1,0 +1,22 @@
+{
+    "Astronaut" : {
+        "type" : 0,
+        "sprite" : "astronaut",
+        "friendly": true
+    },
+    "Bear" : {
+        "type" : 1,
+        "sprite" : "bear",
+        "friendly": false
+    },
+    "Fox" : {
+        "type" : 2,
+        "sprite" : "fox",
+        "friendly": false
+    },                 
+    "Bunny" : {
+        "type" : 3,
+        "sprite" : "bunny",
+        "friendly": true
+    }
+}

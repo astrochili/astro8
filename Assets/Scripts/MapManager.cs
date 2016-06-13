@@ -14,13 +14,20 @@ public class MapManager : MonoBehaviour {
 	
 	public Transform selectionQuad;
 	
-	public MDMap map;	
+	public MDMap map;
 	[SerializeField] int xSizeChunks, ySizeChunks;
 	[SerializeField] int chunkSize = 8;
-	[SerializeField] GameObject chunkPrefab;
+	[SerializeField] GameObject chunkPrefab, objectPrefab, unitPrefab;
 	Vector2 bottomLeft, topRight;
+	
 	List<MapChunk> chunksPool = new List<MapChunk>();
+	List<MapObject> objectsPool = new List<MapObject>();
+	List<MapUnit> unitsPool = new List<MapUnit>();
+
 	List<List<MapChunk>> chunks = new List<List<MapChunk>>();
+	List<MapObject> objects = new List<MapObject>();
+	List<MapUnit> units = new List<MapUnit>();
+	
 	int xChunks { // Количество чанков на экране по X
 		get {
 			return chunks.Count;
@@ -35,11 +42,6 @@ public class MapManager : MonoBehaviour {
 		}
 	}
 	
-	List<MDUnit> unitsPool = new List<MDUnit>();
-	public Dictionary<Vector2, MDUnit> units = new Dictionary<Vector2, MDUnit>();
-	List<MDObject> objectsPool = new List<MDObject>();
-	public Dictionary<Vector2, MDObject> objects = new Dictionary<Vector2, MDObject>();
-		
 	
 	void Start() {
 		map = new MDMap(xSizeChunks * chunkSize, ySizeChunks * chunkSize);
@@ -227,21 +229,5 @@ public class MapManager : MonoBehaviour {
 		}
 		chunk.SetTextures(textures);
 		return chunk;
-	}			
-
-	public MDObject GetObjectAt(Vector2 position) {
-		if (objects.ContainsKey(position)) {
-			 return objects[position];
-		} else {
-			return null;
-		}
-	}
-
-	public MDUnit GetUnitAt(Vector2 position) {
-		if (units.ContainsKey(position)) {
-			 return units[position];
-		} else {
-			return null;
-		}
 	}
 }

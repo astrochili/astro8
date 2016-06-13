@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 460630}
   - 212: {fileID: 21262838}
-  - 114: {fileID: 11408370}
+  - 114: {fileID: 11477588}
   m_Layer: 0
   m_Name: unitPrefab
   m_TagString: Untagged
@@ -92,7 +92,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120002}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11408370
+--- !u!114 &11477588
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -100,10 +100,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 104530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37eb36152d0249d48a7f1bb90c7de8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a4268e6dfdc943d5a3e1e8dfaa90f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendly: 0
 --- !u!212 &21262838
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -130,7 +129,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300002, guid: df82d4716202848e09a471072e333e50, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

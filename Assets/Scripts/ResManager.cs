@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class ResManager : MonoBehaviour {
 
+	// Singletone
     private static ResManager _shared;
     public static ResManager shared {
         get {
@@ -11,22 +12,30 @@ public class ResManager : MonoBehaviour {
             return _shared;
         }
     }
-
-	static string jType = "type";
+	
+	// JSON vars
+	static string jType = "mode";
 	static string jTiles = "tiles";
 	static string jAnimation = "animation";
 	static string jX = "x";
 	static string jY = "y";
 	static string jSync = "sync";
 
+	// Terrain graphics
 	public TextAsset terrainCoords;
 	public Texture2D terrainTexture;
 	public int tileResolution = 8;
 	public float animationSpeed = 0.3f;
 	float terrainWidth, terrainHeight;
-	
 	public GDTile[] terrainTextures;
 	Dictionary<int, GDTile[]> terrainTypes = new Dictionary<int, GDTile[]>();
+	
+	// Objects graphics
+	public GDSprite[] objectSprites;
+	
+	// Units graphics
+	public GDSprite[] unitSprites;
+	
 	
 	void Awake() {
 		InitGraphic();
@@ -102,6 +111,10 @@ public class ResManager : MonoBehaviour {
 			}
 		}
 		return result;
-	}	
+	}
+	
+	public int SpriteIndexForUnitType(int type) {
+		return 0;
+	}
 
 }

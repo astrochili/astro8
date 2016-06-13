@@ -1,4 +1,6 @@
-﻿public class MDTile {
+﻿using System.Collections.Generic;
+
+public class MDTile {
 	
 	public struct Resources {
 		public int wood, coal, iron, copper, titan, silver, crudeoil, food;
@@ -14,7 +16,7 @@
 	public MDTile(int type) {
 		this.type = type;
 		this.texture = ResManager.shared.TextureIndexForTileType(type);
-		this.solid = (type == TILES.WALL || type == TILES.WINDOW);
-		this.liquid = (type == TILES.WATER);
+		this.solid = solidTypes.Contains(type);
+		this.liquid = liquidTypes.Contains(type);
 	}
 }

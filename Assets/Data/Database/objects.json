@@ -1,0 +1,22 @@
+{
+    "Door" : {
+        "type" : "door",
+        "sprite" : "door",
+        "solid": true
+    },
+    "Box" : {
+        "type" : "box",
+        "sprite" : "box",
+        "solid": true
+    },
+    "Bed" : {
+        "type" : "bed",
+        "sprite" : "bed",
+        "solid": true
+    },
+    "Terminal" : {
+        "type" : "terminal",
+        "sprite" : "terminal_blue",
+        "solid": true
+    }
+}

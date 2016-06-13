@@ -1,21 +1,15 @@
 fileFormatVersion: 2
-guid: df82d4716202848e09a471072e333e50
-timeCreated: 1461932106
+guid: 0a6307120ff7d4cc781a8dc81ce84b00
+timeCreated: 1462812482
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: units_0
-    21300002: units_1
-    21300004: units_2
-    21300006: units_3
-    21300008: units_4
-    21300010: units_5
-    21300012: units_6
-    21300014: units_7
-    21300016: units_8
-    21300018: units_9
-    21300020: units_10
-    21300022: units_11
+    21300000: object_fireball
+    21300002: object_terminal_blue
+    21300004: object_terminal_green
+    21300006: object_door
+    21300008: object_box
+    21300010: object_bed
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,7 +56,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: units_0
+    - name: object_fireball
       rect:
         serializedVersion: 2
         x: 0
@@ -73,7 +67,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: units_1
+    - name: object_terminal_blue
       rect:
         serializedVersion: 2
         x: 8
@@ -84,7 +78,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: units_2
+    - name: object_terminal_green
       rect:
         serializedVersion: 2
         x: 16
@@ -95,40 +89,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: units_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 56
-        width: 8
-        height: 8
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: units_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 56
-        width: 8
-        height: 8
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: units_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 56
-        width: 8
-        height: 8
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: units_6
+    - name: object_door
       rect:
         serializedVersion: 2
         x: 0
@@ -139,7 +100,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: units_7
+    - name: object_box
       rect:
         serializedVersion: 2
         x: 8
@@ -150,43 +111,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: units_8
+    - name: object_bed
       rect:
         serializedVersion: 2
         x: 16
-        y: 48
-        width: 8
-        height: 8
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: units_9
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 48
-        width: 8
-        height: 8
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: units_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 8
-        height: 8
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: units_11
-      rect:
-        serializedVersion: 2
-        x: 40
         y: 48
         width: 8
         height: 8

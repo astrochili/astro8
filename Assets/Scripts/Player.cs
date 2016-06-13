@@ -26,19 +26,19 @@ public class Player : MonoBehaviour {
 			direction = Direction.Right;
 		}
 		
-		if (direction > Direction.None) {
+		if (direction != Direction.None) {
 			Vector3 position = _transform.position;
 			if (direction == Direction.Up) {
-				_renderer.sprite = sprites[(int)Direction.Up-1];
+				_renderer.sprite = sprites[(int)Direction.Up];
 				position.y += 1.0f;
 			} else if (direction == Direction.Down) {
-				_renderer.sprite = sprites[(int)Direction.Down-1];
+				_renderer.sprite = sprites[(int)Direction.Down];
 				position.y -= 1.0f;
 			} else if (direction == Direction.Left) {
-				_renderer.sprite = sprites[(int)Direction.Left-1];
+				_renderer.sprite = sprites[(int)Direction.Left];
 				position.x -= 1.0f;
 			} else if (direction == Direction.Right) {
-				_renderer.sprite = sprites[(int)Direction.Right-1];
+				_renderer.sprite = sprites[(int)Direction.Right];
 				position.x += 1.0f;
 			}
 			AttempToMove(position);			
@@ -47,8 +47,8 @@ public class Player : MonoBehaviour {
 	
 	void AttempToMove(Vector2 position) {
 		MDTile tile = MapManager.shared.map.GetTileAt((int)position.x, (int)position.y);
-		MDObject obj = MapManager.shared.GetObjectAt(position);
-		MDUnit unit = MapManager.shared.GetUnitAt(position);
+		MDObject obj = MapManager.shared.map.GetObjectAt(position);
+		MDUnit unit = MapManager.shared.map.GetUnitAt(position);
 		
 		if (tile == null || tile.solid || (tile.liquid && !onBoat)) {
 			Debug.Log("Solid surface!");
