@@ -61,7 +61,7 @@ public class MapChunk : MonoBehaviour {
 		// Assign our mesh to our filter
 		_filter.mesh = mesh;
 		_collider.sharedMesh = mesh; 
-		_renderer.sharedMaterials[0].mainTexture = ResManager.shared.terrainTexture;
+		_renderer.sharedMaterials[0].mainTexture = ResManager.shared.tilesTexture;
 	}
 
 	public void SetTextures(GDTile[] textures) {
@@ -72,7 +72,7 @@ public class MapChunk : MonoBehaviour {
 			GDTile tile = textures[i];
 			Vector2[] uv = tile.uvs[0];
 			frame = 0;
-			if (tile.animation) {				
+			if (tile.isAnimated) {				
 				if (!tile.sync) {
 					frame = Random.Range(0, tile.uvs.Length);
 					uv = tile.uvs[frame];

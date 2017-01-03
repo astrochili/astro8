@@ -20,6 +20,6 @@ public class MouseSelection : MonoBehaviour {
 			currentTileXY.x = x;
 			currentTileXY.y = y;
 			MapManager.shared.selectionQuad.position = new Vector3(x, y, MapManager.shared.selectionQuad.position.z);
-		}		
+		}
 	}
 }

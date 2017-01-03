@@ -13,108 +13,116 @@ public class ResManager : MonoBehaviour {
         }
     }
 	
-	// JSON vars
-	static string jType = "mode";
-	static string jTiles = "tiles";
+	// JSON keys
+	static string jTile = "tile";
+	static string jWeight = "weight";
 	static string jAnimation = "animation";
 	static string jX = "x";
 	static string jY = "y";
 	static string jSync = "sync";
 
-	// Terrain graphics
-	public TextAsset terrainCoords;
-	public Texture2D terrainTexture;
-	public int tileResolution = 8;
-	public float animationSpeed = 0.3f;
-	float terrainWidth, terrainHeight;
-	public GDTile[] terrainTextures;
-	Dictionary<int, GDTile[]> terrainTypes = new Dictionary<int, GDTile[]>();
+	// Graphic resources
+	public TextAsset tilesDatabase;
+	public Texture2D tilesTexture;
+	float atlasWidth, atlasHeight;
 	
-	// Objects graphics
-	public GDSprite[] objectSprites;
+	Dictionary<string, GDTile[]> tiles = new Dictionary<string, GDTile[]>();
+	Dictionary<string, GDSprite> objects = new Dictionary<string, GDSprite>();
+	Dictionary<string, GDSprite> units = new Dictionary<string, GDSprite>();
 	
-	// Units graphics
-	public GDSprite[] unitSprites;
-	
-	
-	void Awake() {
-		InitGraphic();
+	public void LoadResources() {
+		LoadTiles();
 	}
-
-	void InitGraphic() {
-		terrainWidth = terrainTexture.width / tileResolution;
-		terrainHeight = terrainTexture.height / tileResolution;
-		JSONObject jsonRoot = new JSONObject(terrainCoords.text);
-		List<GDTile> textures = new List<GDTile>();
+	
+	void LoadTiles() {
+		this.atlasWidth = this.tilesTexture.width / SettingsManager.shared.tileResolution;
+		this.atlasHeight = this.tilesTexture.height / SettingsManager.shared.tileResolution;
+		JSONObject root = new JSONObject(this.tilesDatabase.text);
 		
-		for (int i = 0; i < jsonRoot.list.Count; i++) {
-			JSONObject jsonGroup = jsonRoot.list[i];
-			int type = (int)jsonGroup.GetField(jType).i;
+		// Переберем тайлы
+		for (int k = 0; k < root.list.Count; k++) {
+			JSONObject jsonTile = root.list[k];
+			GDTile[] textures = new GDTile[jsonTile.list.Count];
+			string name = root.keys[k];
+			tiles[name] = textures;
 
-			JSONObject jsonTiles = jsonGroup.GetField(jTiles);
+			// Переберем варианты текстур тайла
+			for (int t = 0; t < jsonTile.list.Count; t++) {
+				JSONObject jsonTexture = jsonTile.list[t];
 
-			if (jsonGroup.HasField(jAnimation) && jsonGroup.GetField(jAnimation).b == true) {
-				// Пишем все в один тайл-анимацию
-				Vector2[][] uvs = new Vector2[jsonTiles.list.Count][];
-				for (int t = 0; t < jsonTiles.list.Count; t++) {
-					JSONObject jsonTile = jsonTiles.list[t];
-					uvs[t] = GetUV(jsonTile.GetField(jX).f, jsonTile.GetField(jY).f);
-				}
-				GDTile tile = new GDTile(uvs);
-				if (jsonGroup.HasField(jSync)) {
-					tile.sync = jsonGroup.GetField(jSync).b;
-				}
-				terrainTypes[type] = new GDTile[1];
-				terrainTypes[type][0] = tile;
-				textures.Add(tile);
-			} else {
-				// Пишем раздельные тайлы с общей группировкой
-				terrainTypes[type] = new GDTile[jsonTiles.list.Count];
-				for (int t = 0; t < jsonTiles.list.Count; t++) {
-					JSONObject jsonTile = jsonTiles.list[t];
-					Vector2[] uv = GetUV(jsonTile.GetField("x").f, jsonTile.GetField("y").f);
-					GDTile tile = new GDTile(uv);
-					if (jsonTile.HasField("weight")) {
-						tile.weight = (int)jsonTile.GetField("weight").f;	
+				// Если текстура анимированая, переберем координаты кадров и добавим в массив разверток
+				if (jsonTexture.HasField(jAnimation)) {
+					JSONObject jsonFrames = jsonTexture.GetField(jAnimation);
+					Vector2[][] uvs = new Vector2[jsonFrames.list.Count][];
+					for (int f = 0; f < jsonFrames.list.Count; f++) {
+						JSONObject jsonFrame = jsonFrames.list[t];
+						uvs[f] = GetUV(jsonFrame.GetField(jX).f, jsonFrame.GetField(jY).f);
 					}
-					terrainTypes[type][t] = tile;
-					textures.Add(tile);
+					GDTile texture = new GDTile(uvs); 
+					if (jsonTexture.HasField(jSync)) {
+						texture.sync = jsonTexture.GetField(jSync).b;
+					}
+					textures[t] = texture;
+				
+				// Иначе текстура не анимированая, просто добавим координату одной развертки
+				} else {
+					Vector2[] uv = GetUV(jsonTile.GetField(jX).f, jsonTile.GetField(jY).f);
+					GDTile texture = new GDTile(uv);
+					if (jsonTile.HasField(jWeight)) {
+						texture.weight = (int)jsonTile.GetField(jWeight).f;	
+					}
+					textures[t] = texture;
 				}
 			}
 		}
-		terrainTextures = textures.ToArray();
 	}
-	
+
+	// Возвращает развертку по привычным коодинатам (старт сверху слева)
 	Vector2[] GetUV(float x, float y) {
 		Vector2[] uv = new Vector2[4];
-		uv[0] = new Vector2(x/terrainWidth, (terrainHeight-1-y)/terrainHeight);
-		uv[1] = new Vector2((x+1)/terrainWidth, (terrainHeight-1-y)/terrainHeight);
-		uv[2] = new Vector2(x/terrainWidth, (terrainHeight-y)/terrainHeight);
-		uv[3] = new Vector2((x+1)/terrainWidth, (terrainHeight-y)/terrainHeight);
+		uv[0] = new Vector2(x/atlasWidth, (atlasHeight-1-y)/atlasHeight);
+		uv[1] = new Vector2((x+1)/atlasWidth, (atlasHeight-1-y)/atlasHeight);
+		uv[2] = new Vector2(x/atlasWidth, (atlasHeight-y)/atlasHeight);
+		uv[3] = new Vector2((x+1)/atlasWidth, (atlasHeight-y)/atlasHeight);
 		return uv;
 	}
 
-	public int TextureIndexForTileType(int type) {
-		int result = 0;
+	// Возвращает текстуру по имени тайла
+	public GDTile TextureForTile(string type) {
+		GDTile texture = null;
 		float total = 0;
-		GDTile[] tiles = terrainTypes[type];
-		for (int i = 0; i < tiles.Length; i++) {
-			total += tiles[i].weight;
+		GDTile[] textures = this.tiles[type];
+		for (int t = 0; t < textures.Length; t++) {
+			total += textures[t].weight;
 		}
 		float random = Random.Range(0, total);
 		float position = 0;
-		for (int i = 0; i < tiles.Length; i++) {
-			position += tiles[i].weight;
+		for (int p = 0; p < textures.Length; p++) {
+			position += textures[p].weight;
 			if (position > random) {
-				result = System.Array.IndexOf(terrainTextures, tiles[i]);
+				texture = textures[p];
 				break;
 			}
 		}
-		return result;
+		return texture;
 	}
-	
-	public int SpriteIndexForUnitType(int type) {
-		return 0;
+
+	// Возвращает спрайт по имени объекта
+	public GDSprite TextureForObject(string type) {
+		if (objects.ContainsKey(type)) {
+			return objects[type];
+		} else {
+			return null;
+		}
 	}
+
+	// Возвращает спрайт по имени юнита
+	public GDSprite TextureForUnit(string type) {
+		if (units.ContainsKey(type)) {
+			return units[type];
+		} else {
+			return null;
+		}
+	}	
 
 }

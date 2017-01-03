@@ -2,18 +2,14 @@
 
 public class MDUnit {
  
-    public int type;
-    public int texture;
+    public string title = "Ivan";
+    public string type;
+    public GDSprite texture;
     public bool friendly;
     public int ap, apMax;
     
-    public MDUnit(int type, int texture = 0) {
+    public MDUnit(string type) {
         this.type = type;
-        this.friendly = friendlyUnits.Contains(type);
-        if (texture > 0) {
-            this.texture = texture;
-        } else {
-            // Get Random Texture 
-        }
+        this.texture = ResManager.shared.TextureForUnit(type);
     }
 }

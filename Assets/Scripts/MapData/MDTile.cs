@@ -6,17 +6,19 @@ public class MDTile {
 		public int wood, coal, iron, copper, titan, silver, crudeoil, food;
 	};
 	
-	public int type;
-	public int texture;
+	public string type;
+	public GDTile texture;
 	public bool solid;
 	public bool liquid;
 	public float speed = 1.0f;
-	public Resources resources;
+	public Resources resources = new Resources();
 	
-	public MDTile(int type) {
+	public MDTile(string type, bool solid = false, bool liquid = false, float speed = 1.0f) {
 		this.type = type;
-		this.texture = ResManager.shared.TextureIndexForTileType(type);
-		this.solid = solidTypes.Contains(type);
-		this.liquid = liquidTypes.Contains(type);
+		this.texture = ResManager.shared.TextureForTile(type);
+		this.solid = solid;
+		this.liquid = liquid;
+		this.speed = speed;
 	}
+	
 }

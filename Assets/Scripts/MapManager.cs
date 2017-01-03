@@ -43,12 +43,10 @@ public class MapManager : MonoBehaviour {
 	}
 	
 	
-	void Start() {
-		map = new MDMap(xSizeChunks * chunkSize, ySizeChunks * chunkSize);
+	public void Init() {
+		this.map = MapGenerator.Make(xSizeChunks * chunkSize, ySizeChunks * chunkSize);
 		UpdateChunks();
-		float speed = ResManager.shared.animationSpeed;
-		InvokeRepeating("Animate", speed, speed);  
-			
+		InvokeRepeating("Animate", SettingsManager.shared.animationSpeed, SettingsManager.shared.animationSpeed);
 	}
 	
 	void Animate() {
@@ -224,8 +222,8 @@ public class MapManager : MonoBehaviour {
 		chunk.position = position;
 		MDTile[] tiles = map.GetTilesAt((int)position.x, (int)position.y, chunkSize, chunkSize);
 		GDTile[] textures = new GDTile[tiles.Length];
-		for (int i = 0; i < tiles.Length; i++) {
-			textures[i] = ResManager.shared.terrainTextures[tiles[i].texture];
+		for (int t = 0; t < tiles.Length; t++) {
+			textures[t] = tiles[t].texture;
 		}
 		chunk.SetTextures(textures);
 		return chunk;
