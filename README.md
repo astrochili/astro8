@@ -1,1 +1,1 @@
-Single-player game about the lost astronaut, who just wants to find a way home.
+Single-player game about the lost astronaut, who just wants to find a way home. Not done yet and never be I think.
