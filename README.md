@@ -1,1 +1,1 @@
-Single-player game about the lost astronaut, who just wants to find a way home. Not done yet and never be I think.
+Single-player game about the lost astronaut, who just wants to find a way home. Procedurally generated map with chunks reusing. It's not done yet and I think never be.
