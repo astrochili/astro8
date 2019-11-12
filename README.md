@@ -1,8 +1,8 @@
 Single-player game about the lost astronaut, who just wants to find a way home. It's not done yet and I think never be.
 
-- Procedural map generation
+- Procedural tile map generation
 - Reusable pool of chunks
-- Textures mapping with UVs
-- Manual quad creation
+- Manual tiles creation using quads
+- Textures mapping with UVs using the atlas
 
 ![Demo GIF](demo.gif)
