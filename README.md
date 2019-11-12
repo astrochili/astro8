@@ -1,4 +1,6 @@
-Single-player game about the lost astronaut, who just wants to find a way home.
+
+# Astro8
+A game about the lost astronaut, who just wants to find a way home. Made with Unity.
 
 - Procedural tile map generation
 - Reusable pool of chunks
